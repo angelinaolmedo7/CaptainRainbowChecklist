@@ -24,6 +24,10 @@ def list_all_items():
         index += 1
 
 
+def mark_completed(index):
+    update(index, u"\u221A"+read(index))
+
+
 def select(function_code):
 
     if function_code == "C":
@@ -49,6 +53,10 @@ def test():
     destroy(1)
 
     print(read(0))
+
+    list_all_items()
+
+    mark_completed(0)
 
     list_all_items()
 
