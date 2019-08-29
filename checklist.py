@@ -34,12 +34,17 @@ def select(function_code):
         input_item = user_input("Input item:")
         create(input_item)
     elif function_code == "R":
-        item_index = user_input("Index Number?")
+        item_index = int(user_input("Index Number?"))
         read(item_index)
     elif function_code == "P":
         list_all_items()
     else:
         print("Unknown Option")
+
+
+def user_input(prompt):
+    user_input = input(prompt)
+    return user_input
 
 
 def test():
@@ -58,6 +63,11 @@ def test():
 
     mark_completed(0)
 
+    list_all_items()
+
+    select("C")
+    list_all_items()
+    select("R")
     list_all_items()
 
 
