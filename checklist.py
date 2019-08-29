@@ -68,21 +68,85 @@ def user_input(prompt):
 def color_code(item):
     print_item = str(item).upper()
     if "RED" in print_item:
-        return "\033[31m{}\033[00m".format(item)
+        return red(item)
     elif "ORANGE" in print_item:
-        return "\033[91m{}\033[00m".format(item)
+        return orange(item)
     elif "YELLOW" in print_item:
-        return "\033[93m{}\033[00m".format(item)
+        return yellow(item)
     elif "GREEN" in print_item:
-        return "\033[32m{}\033[00m".format(item)
+        return green(item)
     elif "BLUE" in print_item:
-        return "\033[34m{}\033[00m".format(item)
+        return blue(item)
     elif "PURPLE" in print_item:
-        return "\033[35m{}\033[00m".format(item)
+        return purple(item)
+    elif "PINK" in print_item:
+        return pink(item)
+    elif "INDIGO" in print_item:
+        return indigo(item)
+    elif "VIOLET" in print_item:
+        return purple(item)
     elif "RAINBOW" in print_item:
-        return "\033[35m{}\033[00m".format(item)
+        return rainbow(item)
     else:
         return item
+
+
+def red(item):
+    return "\033[31m{}\033[00m".format(item)
+
+
+def orange(item):
+    return "\033[91m{}\033[00m".format(item)
+
+
+def yellow(item):
+    return "\033[93m{}\033[00m".format(item)
+
+
+def green(item):
+    return "\033[32m{}\033[00m".format(item)
+
+
+def blue(item):
+    return "\033[34m{}\033[00m".format(item)
+
+
+def purple(item):
+    return "\033[35m{}\033[00m".format(item)
+
+
+def pink(item):
+    return "\033[95m{}\033[00m".format(item)
+
+
+def indigo(item):
+    return "\033[94m{}\033[00m".format(item)
+
+
+def rainbow(item):
+    color_count = 0
+    new_string = ""
+    for elem in item:
+        if elem == " ":
+            new_string += elem
+            color_count += -1
+        elif color_count == 0:
+            new_string += red(elem)
+        elif color_count == 1:
+            new_string += orange(elem)
+        elif color_count == 2:
+            new_string += yellow(elem)
+        elif color_count == 3:
+            new_string += green(elem)
+        elif color_count == 4:
+            new_string += blue(elem)
+        elif color_count == 5:
+            new_string += purple(elem)
+        elif color_count == 6:
+            new_string += pink(elem)
+            color_count = -1
+        color_count += 1
+    return new_string
 
 
 def test():
