@@ -30,16 +30,30 @@ def mark_completed(index):
 
 def select(function_code):
 
-    if function_code == "C":
+    if function_code.upper() == "C":
         input_item = user_input("Input item:")
         create(input_item)
-    elif function_code == "R":
+    elif function_code.upper() == "HELP":
+        print("\nPress:\nC to add to list\nR to read from list\nP to display list\nD to remove an item by index\nRm to remove an item by name\nQ to quit\n")
+    elif function_code.upper() == "R":
         item_index = int(user_input("Index Number?"))
-        read(item_index)
-    elif function_code == "P":
+        print(read(item_index))
+    elif function_code.upper() == "P":
         list_all_items()
+    elif function_code.upper() == "Q":
+        return False
+    elif function_code.upper() == "D":
+        item_index = int(user_input("Index Number?"))
+        destroy(item_index)
+    elif function_code.upper() == "RM":
+        input_item = user_input("Input item to remove:")
+        if input_item in checklist:
+            checklist.remove(input_item)
+        else:
+            print("Item not found in list. Check spelling and capitalization\n")
     else:
         print("Unknown Option")
+    return True
 
 
 def user_input(prompt):
@@ -71,4 +85,8 @@ def test():
     list_all_items()
 
 
-test()
+running = True
+while running:
+    selection = user_input("Type HELP to display commands\n")
+
+    running = select(selection)
