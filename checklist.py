@@ -200,8 +200,18 @@ def test():
     list_all_items()
     select("R")
     list_all_items()
+    select("U")
+    list_all_items()
+    select("D")
+    list_all_items()
+    select("RM")
+    list_all_items()
+    select("CH")
+    list_all_items()
+    select("UCH")
+    list_all_items()
 
-
+#test()
 running = True
 while running:
     selection = user_input("Type HELP to display commands\n")
